@@ -1,0 +1,9 @@
+defaults: &defaults
+  subdomain: localhost
+  api_key: -
+
+development:
+  <<: *defaults
+
+production:
+  <<: *defaults

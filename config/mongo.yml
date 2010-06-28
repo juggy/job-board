@@ -1,0 +1,10 @@
+defaults: &defaults
+  host: localhost
+
+development:
+  <<: *defaults
+  database: db_dev
+
+production:
+  <<: *defaults
+  database: db

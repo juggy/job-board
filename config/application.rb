@@ -6,6 +6,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "rails/test_unit/railtie"
+require 'mongoid/railtie'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -36,16 +37,16 @@ module Base
     # config.i18n.default_locale = :de
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
-    # config.generators do |g|
-    #   g.orm             :active_record
-    #   g.template_engine :erb
+    config.generators do |g|
+       g.orm             :mongoid
+       g.template_engine :haml
     #   g.test_framework  :test_unit, :fixture => true
-    # end
+    end
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :password_confirmation]
   end
 end
