@@ -1,9 +1,10 @@
 %h2 Sign in
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  = f.hidden_field :account_id, :value=>Account.current_account.id
   %p
-    = f.label :email
+    = f.label :username
     %br/
-    = f.text_field :email
+    = f.text_field :username
   %p
     = f.label :password
     %br/

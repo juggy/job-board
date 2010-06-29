@@ -2,7 +2,9 @@
 %html
   %head
     %title Base
-    = stylesheet_link_tag :all
+    = formtastic_stylesheet_link_tag
+    = stylesheet_link_tag "application"
+    
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"
     = javascript_include_tag 'rails'
     = csrf_meta_tag 

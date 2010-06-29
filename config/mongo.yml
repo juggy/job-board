@@ -3,8 +3,8 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: db_dev
+  database: development
 
 production:
   <<: *defaults
-  database: db
+  database: production

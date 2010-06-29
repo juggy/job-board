@@ -1,0 +1,11 @@
+form.formtastic fieldset {
+	display: block;
+}
+
+form.formtastic fieldset.buttons{
+	padding-left: 10px;
+}
+
+form.formtastic fieldset ol li{
+	display: block;
+}

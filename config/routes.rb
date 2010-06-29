@@ -1,6 +1,13 @@
 Base::Application.routes.draw do |map|
   devise_for :users
   
+  match "sign_up" => "accounts#new", :as=>"sign_up"
+  resources :accounts do
+    collection do
+      get :merci
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

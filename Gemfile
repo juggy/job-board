@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta4'
 
 # Mongo Adapter
+gem "mongo_ext"
 gem "bson_ext"
 gem "mongoid", :git => "git://github.com/durran/mongoid.git"
 
@@ -12,18 +13,15 @@ gem 'mongo_session_store', :git => 'git://github.com/nmerouze/mongo_session_stor
 
 #Layout
 gem "haml"
+gem "formtastic", :git=>"git://github.com/justinfrench/formtastic.git", :branch=>"rails3"
 gem 'rails3-generators', :group => :development
 
 
 #Chargify
 gem "chargify_api_ares"
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
-# Use unicorn as the web server
-# gem 'unicorn'
+# Use thin as the web server
+gem 'thin'
 
 # Deploy with Capistrano
 # gem 'capistrano'

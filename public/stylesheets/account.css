@@ -1,0 +1,61 @@
+input[type="password"] {
+  padding: 5px;
+  margin: 0.5em 0; }
+
+#signup-head {
+  font-size: 2.2em;
+  padding: 50px 0 20px 0;
+  text-align: center; }
+
+form {
+  width: 540px;
+  margin: 0 auto; }
+  form .field {
+    float: left; }
+  form .label {
+    padding: 10px 0 0 50px;
+    width: 110px; }
+
+.signup {
+  background-repeat: no-repeat;
+  padding: 8px 0 10px 40px;
+  margin-top: 30px; }
+
+#signup-contact {
+  background-image: url(/images/signup/badge2.png); }
+
+#signup-user {
+  background-image: url(/images/signup/badge3.png); }
+
+#signup-domain {
+  background-image: url(/images/signup/badge1.png); }
+
+#signup-agreement {
+  margin-top: 10px; }
+
+.fieldWithErrors {
+  display: inline; }
+  .fieldWithErrors input[type="text"] {
+    border: 1px solid #d93704; }
+  .fieldWithErrors label {
+    color: #d93704; }
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px; }
+  #errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #ff4a3b;
+    color: white; }
+  #errorExplanation p {
+    color: #333333;
+    margin-bottom: 0;
+    padding: 5px; }
+  #errorExplanation ul li {
+    font-size: 12px;
+    list-style: square; }
