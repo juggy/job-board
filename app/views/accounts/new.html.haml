@@ -2,14 +2,13 @@
   Un petit questionnaire pour créer votre compte
   
 - semantic_form_for @account do |form|
-  - form.inputs "L'ADRESSE DE VOTRE COMPTE" do
-    = form.input :subdomain, :hint=>"http://ma-compagnie.ccubeapp.com", :input_html=>{:class=>"title"}
-  = form.semantic_fields_for :owner do |user|
-    - user.inputs "VOTRE UTILISATEUR PERSONNEL" do
-      = user.input :email, :input_html=>{:class=>"title"}
-      = user.input :username, :input_html=>{:class=>"title"}
-      = user.input :password, :input_html=>{:class=>"title"}
-      = user.input :password_confirmation, :input_html=>{:class=>"title"}
+  = form.inputs "L'ADRESSE DE VOTRE COMPTE" do
+    = form.input :subdomain, :hint=>"http://sous-domaine.ccubeapp.com", :input_html=>{:class=>"title"}
+  = form.inputs "VOTRE UTILISATEUR PERSONNEL", :for=>:owner do |user|
+    = user.input :email, :input_html=>{:class=>"title"}
+    = user.input :username, :input_html=>{:class=>"title"}
+    = user.input :password, :input_html=>{:class=>"title"}
+    = user.input :password_confirmation, :input_html=>{:class=>"title"}
   #signup-agreement.small
     En créant votre compte vous accepter nos termes de service, notre politique sur la vie privée.
   = form.buttons

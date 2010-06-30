@@ -1,0 +1,44 @@
+.account
+  %h2 Votre compte
+  - semantic_form_for @account do |f|
+    = f.inputs "SOUS-DOMAINE" do
+      %li.string 
+        Votre sous-domaine est 
+        = link_to account_complete_url(@account.subdomain), account_complete_url(@account.subdomain)
+    
+    = f.inputs "COMPAGNIE" do 
+      = f.input :company_name, :input_html=>{:class=>"text"}
+      = f.input :street, :input_html=>{:class=>"text"}
+      = f.input :city, :input_html=>{:class=>"text"}
+      = f.input :state, :input_html=>{:class=>"text"}
+      = f.input :zip, :input_html=>{:class=>"text"}
+      = f.input :country, :as=>:country
+      
+    = f.inputs "CONFIGURATION" do
+      = f.input :timezone, :as=>:time_zone
+      = f.input :locale, :as=>:select, :collection=>{"Français" => "fr", "English" => "en"}
+      
+    = f.inputs "ADMINISTRATEUR" do
+      = f.input :admin_name, :input_html=>{:class=>"text"}
+      = f.input :admin_email, :input_html=>{:class=>"text"}
+    
+    = f.buttons
+      
+  .users
+    Vos utilisateurs
+    
+    .head
+      .name Nom
+      .email Email
+      .username Nom d'utilisateur
+      .actions
+    - @account.users.each do |user|
+      .user
+        .name= user.name
+        .email= user.email
+        .username= user.username
+        .actions
+          .action= link_to "Vérouiller"
+          .action= link_to "Effacer"
+          .action= link_to "Nouveau mot de passe"
+          

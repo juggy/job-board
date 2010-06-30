@@ -8,7 +8,7 @@ module AccountLocation
       @account.subdomain if @account && @account.respond_to?(:subdomain)
     end
   
-    def account_url(account_subdomain = default_account_subdomain, use_ssl = request.ssl?)
+    def account_complete_url(account_subdomain = default_account_subdomain, use_ssl = request.ssl?)
       (use_ssl ? "https://" : "http://") + account_host(account_subdomain)
     end
  

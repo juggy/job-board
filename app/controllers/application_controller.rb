@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter :load_current_account
   before_filter :authenticate_user!
   
+  helper_method :account_complete_url
+  
   protected
   def load_current_account
     Account.current_account = nil # clear previous

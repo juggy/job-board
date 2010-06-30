@@ -1,11 +1,22 @@
 class Account
   include Mongoid::Document
   
-  field :company_name, :type=>String
-  field :subdomain, :type=>String
+  field :company_name
+  field :admin_email
+  field :admin_name
+  field :street
+  field :city
+  field :state
+  field :zip
+  field :country, :default  => "Canada"
+  
+  field :timezone
+  field :locale, :default => "fr"
+  
+  field :subdomain
 
-  has_one_related :owner, :class_name=>"User"
   has_many_related :users 
+  embeds_one :owner, :class_name => "User"
   accepts_nested_attributes_for :owner, :allow_destroy => true
   
   ReservedSubdomains = 
@@ -18,6 +29,8 @@ class Account
   validates_format_of :subdomain, :with => /^[a-z0-9-]+$/
 
   before_validation :downcase_subdomain
+  
+  before_create :relate_owner
 
   def self.current_account
     Thread.current[:current_account]
@@ -36,6 +49,10 @@ class Account
 
   def downcase_subdomain
    self.subdomain.downcase!
+  end
+  
+  def relate_owner
+    self.users << self.owner
   end
   
   

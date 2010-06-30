@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
-  skip_before_filter :load_current_account, :except=>:merci
-  skip_before_filter :authenticate_user!, :except=>:merci
+  skip_before_filter :load_current_account, :except=>:edit
+  skip_before_filter :authenticate_user!, :except=>:edit
   
   def new
     @account = Account.new
@@ -10,13 +10,16 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(params[:account])
     if @account.save
-      render :action => "merci"
+      p @account.subdomain
+      redirect_to(account_complete_url(@account.subdomain) + edit_account_path(@account))
     else
       render :action => "new"
     end
   end
   
-  def merci
+  def edit
+    @account = Account.current_account
+    p @account
   end
   
 end
