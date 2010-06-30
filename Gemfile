@@ -3,7 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta4'
 
 # Mongo Adapter
-gem "mongo_ext"
+git "git://github.com/mongodb/mongo-ruby-driver.git"
+gem "mongo"
 gem "bson_ext"
 gem "mongoid", :git => "git://github.com/durran/mongoid.git"
 
