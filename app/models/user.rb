@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
-
+  include Mongoid::Timestamps
+  
   devise  :validatable, :database_authenticatable, :lockable, :rememberable, :registerable, :trackable
 
   belongs_to_related :account
@@ -10,7 +11,5 @@ class User
 
   field :name
   field :username
-  field :created_at, :type => DateTime
-  field :updated_at, :type => DateTime
   
 end
