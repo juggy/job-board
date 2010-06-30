@@ -814,12 +814,12 @@ body {
   body legend {
     font-weight: bold;
     font-size: 1.2em; }
-  body input.text {
+  body input[type=text] {
     margin: 0.5em 0;
     border: 1px solid #bbbbbb;
     width: 300px;
     padding: 5px; }
-    body input.text:focus {
+    body input[type=text]:focus {
       border: 1px solid #666666; }
   body input.title {
     font-size: 1.5em; }

@@ -7,11 +7,11 @@
         = link_to account_complete_url(@account.subdomain), account_complete_url(@account.subdomain)
     
     = f.inputs "COMPAGNIE" do 
-      = f.input :company_name, :input_html=>{:class=>"text"}
-      = f.input :street, :input_html=>{:class=>"text"}
-      = f.input :city, :input_html=>{:class=>"text"}
-      = f.input :state, :input_html=>{:class=>"text"}
-      = f.input :zip, :input_html=>{:class=>"text"}
+      = f.input :company_name
+      = f.input :street
+      = f.input :city
+      = f.input :state
+      = f.input :zip
       = f.input :country, :as=>:country
       
     = f.inputs "CONFIGURATION" do
@@ -19,8 +19,8 @@
       = f.input :locale, :as=>:select, :collection=>{"Français" => "fr", "English" => "en"}
       
     = f.inputs "ADMINISTRATEUR" do
-      = f.input :admin_name, :input_html=>{:class=>"text"}
-      = f.input :admin_email, :input_html=>{:class=>"text"}
+      = f.input :admin_name
+      = f.input :admin_email
     
     = f.buttons
       

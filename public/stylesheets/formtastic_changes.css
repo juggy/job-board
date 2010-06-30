@@ -7,5 +7,10 @@ form.formtastic fieldset {
   form.formtastic fieldset ol li {
     display: block;
     margin: 0 0 0.5em 1em; }
+    form.formtastic fieldset ol li p.inline-hints {
+      margin: 0.5em 0px 0px 15%; }
     form.formtastic fieldset ol li label {
       width: 15%; }
+      form.formtastic fieldset ol li label abbr {
+        padding: 0px 5px;
+        color: red; }
