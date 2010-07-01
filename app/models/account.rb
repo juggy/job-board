@@ -32,6 +32,7 @@ class Account
   before_validation :downcase_subdomain
   
   before_create :relate_owner
+  after_create :make_current
 
   def self.current_account
     Thread.current[:current_account]
@@ -53,7 +54,11 @@ class Account
   end
   
   def relate_owner
-    self.users << self.owner
+    self.users << self.owner if self.owner
+  end
+  
+  def make_current
+    Account.current_account = self
   end
   
   
