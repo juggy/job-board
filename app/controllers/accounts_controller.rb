@@ -9,6 +9,7 @@ class AccountsController < ApplicationController
   
   def create
     @account = Account.new(params[:account])
+    Account.current_account = @account
     if @account.save
       redirect_to(account_complete_url(@account.subdomain) + edit_account_path(@account))
     else
