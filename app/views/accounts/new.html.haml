@@ -4,7 +4,7 @@
 - semantic_form_for @account do |form|
   = form.inputs "L'ADRESSE DE VOTRE COMPTE" do
     = form.input :subdomain, :hint=>"http://sous-domaine.ccubeapp.com", :input_html=>{:class=>"title"}
-  = form.inputs "VOTRE UTILISATEUR PERSONNEL", :for=>:owner do |user|
+  = form.inputs "VOTRE UTILISATEUR PERSONNEL", :for=>:users do |user|
     = user.input :email, :input_html=>{:class=>"title"}
     = user.input :username, :input_html=>{:class=>"title"}
     = user.input :password, :input_html=>{:class=>"title"}

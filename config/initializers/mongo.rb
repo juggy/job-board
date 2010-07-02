@@ -5,5 +5,7 @@ end
 Mongoid.configure do |config|
   name = @settings["database"]
   host = @settings["host"]
-  config.master = Mongo::Connection.new.db(name)
+  port = @settings["port"]
+  logger = "irb" == $0 ? Logger.new($stdout) : Rails.logger
+  config.master = Mongo::Connection.new(host, port, :logger => "irb" == $0 ? Logger.new($stdout) : Rails.logger).db(name)
 end

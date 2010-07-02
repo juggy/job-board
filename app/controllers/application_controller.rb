@@ -13,12 +13,9 @@ class ApplicationController < ActionController::Base
   protected
   def load_current_account
     Account.current_account = nil # clear previous
-    p account_subdomain
     @current_account ||= Account.first(:conditions=>{:subdomain=>account_subdomain})
-    p @current_account
     unless @current_account
       unless @no_account_redirect
-        p "redirected"
         redirect_to sign_up_path
       else
         raise ScopedByAccount::MissingAccountError
