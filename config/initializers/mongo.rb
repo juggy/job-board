@@ -1,5 +1,5 @@
 File.open(File.join(Rails.root, 'config/mongo.yml'), 'r') do |f|
-  @settings = YAML.load(f)[RAILS_ENV]
+  @settings = YAML.load(f)[Rails.env]
 end
 
 Mongoid.configure do |config|

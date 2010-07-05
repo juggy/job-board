@@ -3,10 +3,11 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0.beta4'
 
 # Mongo Adapter
-git "git://github.com/mongodb/mongo-ruby-driver.git"
-gem "mongo"
+#git "git://github.com/mongodb/mongo-ruby-driver.git"
+#gem "mongo", "=1.0.1"
 gem "bson_ext"
 gem "mongoid", :git => "git://github.com/durran/mongoid.git"
+gem 'database_cleaner'
 
 #Authentification
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :tag => 'v1.1.rc2'
@@ -21,23 +22,16 @@ gem 'rails3-generators', :group => :development
 #Chargify
 gem "chargify_api_ares"
 
-# Use thin as the web server
-gem 'thin'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri', '1.4.1'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Bundle gems for certain environments:
-# gem 'rspec', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+group :test do
+  # bundler requires these gems while running tests
+  gem 'webrat'
+  gem 'rspec', '>=2.0.0.beta.1'
+  gem 'rspec-rails', '>=2.0.0.beta.1'
+  gem 'autotest'
+  gem 'autotest-rails'
+  gem 'autotest-growl'
+  gem 'autotest-fsevent', '0.1.1', :require => false
+  gem 'spork'
+  gem 'machinist_mongo', "2.0.0.pre"
+  gem 'forgery'
+end
