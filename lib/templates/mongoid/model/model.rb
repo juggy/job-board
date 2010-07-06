@@ -3,6 +3,7 @@ class <%= class_name %><%= " < #{options[:parent].classify}" if options[:parent]
   ### Includes
 <% unless options[:parent] -%>
   include Mongoid::Document
+  include ScopeByAccount
 <% end -%>
 <% if options[:timestamps] -%>
   include Mongoid::Timestamps
