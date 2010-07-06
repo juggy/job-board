@@ -32,6 +32,7 @@ group :test do
   gem 'autotest-growl'
   gem 'autotest-fsevent', '0.1.1', :require => false
   gem 'spork'
-  gem 'machinist_mongo', "2.0.0.pre"
+  gem "machinist", ">=2.0.0beta1"
+  gem 'machinist_mongo', "2.0.0.pre", :require => 'machinist/mongoid', :git=>"git@github.com:juggy/machinist_mongo.git"
   gem 'forgery'
 end

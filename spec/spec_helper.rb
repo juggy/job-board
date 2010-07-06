@@ -14,7 +14,6 @@ Spork.prefork do
   require 'rspec/rails'
   require "webrat"
   require 'machinist/mongoid'
-  require 'sham'
   require 'forgery'
   require 'database_cleaner'
 end
@@ -23,21 +22,20 @@ Spork.each_run do
   # Requires supporting files with custom matchers and macros, etc,
   # in ./support/ and its subdirectories.
   Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
-
+  require File.expand_path(File.dirname(__FILE__) + "/blueprints.rb")
+  
   DatabaseCleaner.strategy = :truncation
   
   Webrat.configure do |config|
     config.mode = :rails
   end
-
-  require File.expand_path(File.dirname(__FILE__) + "/blueprints")
   
   RSpec.configure do |config|
     # == Mock Framework
     config.mock_with :rspec
-    config.before :each do 
-      DatabaseCleaner.clean 
-    end
+    config.before(:each)    { DatabaseCleaner.clean }
+    # config.before(:each)    { Sham.reset(:before_each) }
+    # config.before(:all)     { Sham.reset(:before_all)  }
   end
 end
 
