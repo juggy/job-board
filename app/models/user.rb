@@ -4,30 +4,15 @@ class User
 
   devise  :validatable, :database_authenticatable, :lockable, :rememberable, :registerable, :trackable
   
-  embedded_in :account, :inverse_of=>:users
-  validates_presence_of   :username
+  validates_presence_of   :name, :company_name
 
   field :name
-  field :username
+  field :timezone, :default =>"est"
+  field :locale, :default => "fr"
+  field :company_name
   
-  def self.find(*args)
-    options = args.extract_options!
-    user_options = Hash[*(options[:conditions] || {}).map { |k, v| [ :"users.#{k == :id ? :_id : k}", v ] }.flatten]
-    if account = Account.find(*(args + [options.merge(:conditions => user_options)]))
-      account.users.detect do |u|
-        options[:conditions].all? { |k, v| u.send(k) == v }
-      end
-    else
-      super
-    end
-  end
-
-  def self.find_for_authentication(conditions={})
-    if Account.current_account
-      Account.current_account.users.detect { |u| u.username == conditions[:username] }
-    else
-      nil
-    end
-  end
-    
+  references_many :jobs, :dependent => :destroy
+  
+  attr_accessible :email, :password, :password_confirmation, :name, :timezone, :locale, :company_name
+  
 end

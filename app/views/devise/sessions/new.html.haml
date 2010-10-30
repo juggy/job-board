@@ -1,17 +1,11 @@
-%h2 Sign in
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  = f.hidden_field :account_id, :value=>Account.current_account.id
-  %p
-    = f.label :username
-    %br/
-    = f.text_field :username
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
+#signin-head= t "devise.views.sessions.new.sign_in"
+
+
+- semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |form|
+  = form.semantic_errors
+  = form.input :email, :input_html=>{:class=>"title"}
+  = form.input :password, :input_html=>{:class=>"title"}
   - if devise_mapping.rememberable?
-    %p
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %p= f.submit "Sign in"
+    = form.input :remember_me, :as=>:boolean, :input_html=>{:class=>"title"}
+  = form.buttons
 = render :partial => "devise/shared/links"

@@ -1,12 +1,12 @@
 Base::Application.routes.draw do |map|
   devise_for :users
   
-  match "sign_up" => "accounts#new", :as=>"sign_up"
-  resources :accounts do
-    collection do
-      get :merci
-    end
-  end
+  # match "sign_up" => "devise/registration#new", :as=>"sign_up"
+  # resources :users do
+  #   collection do
+  #     get :merci
+  #   end
+  # end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,7 +57,7 @@ Base::Application.routes.draw do |map|
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "users#edit"
 
   # See how all your routes lay out with "rake routes"
 
