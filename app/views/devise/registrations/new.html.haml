@@ -1,13 +1,14 @@
-#signup-head= t "devise.views.registrations.new.sign_up"
+#signup-head= t "devise.views.registrations.new.title.sign_up"
   
 - semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |form|
   = form.semantic_errors
-  = form.input :email, :input_html=>{:class=>"title"}
-  = form.input :name, :input_html=>{:class=>"title"}
-  = form.input :company_name, :input_html=>{:class=>"title"}
-  = form.input :password, :input_html=>{:class=>"title"}
-  = form.input :password_confirmation, :input_html=>{:class=>"title"}
+  = form.inputs t("devise.views.registrations.new.title.account") do
+    = form.input :name, :input_html=>{:class=>"title"}
+    = form.input :company_name, :input_html=>{:class=>"title"}
+    = form.input :email, :input_html=>{:class=>"title"}
+    = form.input :password, :input_html=>{:class=>"title"}
+    = form.input :password_confirmation, :input_html=>{:class=>"title"}
   #signup-agreement.small
-    En créant votre compte vous accepter nos termes de service, notre politique sur la vie privée.
+    = t("devise.views.registrations.new.title.terms")
   = form.buttons
 = render :partial => "devise/shared/links"

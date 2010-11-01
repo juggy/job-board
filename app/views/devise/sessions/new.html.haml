@@ -1,11 +1,9 @@
-#signin-head= t "devise.views.sessions.new.sign_in"
-
-
 - semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |form|
   = form.semantic_errors
-  = form.input :email, :input_html=>{:class=>"title"}
-  = form.input :password, :input_html=>{:class=>"title"}
-  - if devise_mapping.rememberable?
-    = form.input :remember_me, :as=>:boolean, :input_html=>{:class=>"title"}
+  = form.inputs t("devise.views.sessions.new.title.sign_in") do
+    = form.input :email, :input_html=>{:class=>"title"}
+    = form.input :password, :input_html=>{:class=>"title"}
+    - if devise_mapping.rememberable?
+      = form.input :remember_me, :as=>:boolean, :input_html=>{:class=>"title"}
   = form.buttons
 = render :partial => "devise/shared/links"

@@ -1,6 +1,8 @@
 Base::Application.routes.draw do |map|
   devise_for :users
   
+  resources :jobs
+  
   # match "sign_up" => "devise/registration#new", :as=>"sign_up"
   # resources :users do
   #   collection do
@@ -57,7 +59,7 @@ Base::Application.routes.draw do |map|
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "users#edit"
+  root :to => "jobs#public_index"
 
   # See how all your routes lay out with "rake routes"
 

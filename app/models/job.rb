@@ -15,7 +15,7 @@ class Job
   
   referenced_in :user
   
-  validates_presence_of :company_name, :title, :short_description, :description, :city, :state, :country
+  validates_presence_of :company_name, :title, :description, :city, :state, :country
   validates_format_of :contact_email, :with => /\A([-a-z0-9!\#$%&'*+\/=?^_`{|}~]+\.)*[-a-z0-9!\#$%&'*+\/=?^_`{|}~]+@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   

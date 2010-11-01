@@ -3,16 +3,18 @@ class User
   include Mongoid::Timestamps
 
   devise  :validatable, :database_authenticatable, :lockable, :rememberable, :registerable, :trackable
-  
-  validates_presence_of   :name, :company_name
-
-  field :name
-  field :timezone, :default =>"est"
-  field :locale, :default => "fr"
-  field :company_name
-  
   references_many :jobs, :dependent => :destroy
+  embeds_one :user_information
+  after_initialize :create_information
   
-  attr_accessible :email, :password, :password_confirmation, :name, :timezone, :locale, :company_name
+  
+  attr_accessible :email, :password, :password_confirmation
+  delegate :name, :timezone, :locale, :company_name, :to=>:user_information
+  
+  protected
+  
+  def create_information
+    self.user_information = UserInformation.new
+  end
   
 end
