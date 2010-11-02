@@ -1,0 +1,72 @@
+#job-app button {
+  text-shadow: 1px 1px 1px white;
+  -moz-text-shadow: 1px 1px 1px white;
+  -webkit-text-shadow: 1px 1px 1px white;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid silver;
+  background-color: silver;
+  font-size: 1.1em;
+  margin: 0 10px;
+  height: 24px; }
+#job-app #job-list {
+  border: 1px solid silver;
+  -moz-border-radius: 6px 0 0 0;
+  -webkit-border-radius: 6px 0 0 0;
+  border-radius: 6px 0 0 0;
+  background-color: #efefef;
+  width: 340px;
+  bottom: 145px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  overflow-y: auto; }
+  #job-app #job-list .job-item {
+    float: clear;
+    padding: 6px 6px 0px 6px;
+    border-bottom: 1px solid white;
+    text-shadow: 1px 1px 1px white;
+    -moz-text-shadow: 1px 1px 1px white;
+    -webkit-text-shadow: 1px 1px 1px white; }
+    #job-app #job-list .job-item.selected {
+      color: white;
+      background-color: #2163a5;
+      text-shadow: 1px 1px 1px gray;
+      -moz-text-shadow: 1px 1px 1px gray;
+      -webkit-text-shadow: 1px 1px 1px gray; }
+    #job-app #job-list .job-item .title {
+      font-size: 1.3em;
+      font-weight: bold; }
+    #job-app #job-list .job-item .info {
+      padding-right: 10px;
+      margin-right: 10px;
+      width: 80px; }
+    #job-app #job-list .job-item .line {
+      padding-top: 6px;
+      margin: 0 -6px;
+      border-bottom: 1px solid #cfcfcf; }
+#job-app #job-toolbar {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  width: 340px;
+  height: 24px;
+  border: 1px solid silver;
+  border-top: none;
+  background-color: #efefef;
+  padding: 10px 0;
+  -moz-border-radius: 0 0 0 6px;
+  -webkit-border-radius: 0 0 0 6px;
+  border-radius: 0 0 0 6px; }
+#job-app #job-edit {
+  position: absolute;
+  left: 441px;
+  right: 100px;
+  top: 100px;
+  bottom: 100px;
+  -moz-border-radius: 0 6px 6px;
+  -webkit-border-radius: 0 6px 6px 0;
+  border-radius: 6px 0 6px 6px 0;
+  border: 1px solid silver;
+  overflow-y: auto; }

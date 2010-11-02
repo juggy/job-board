@@ -1,0 +1,119 @@
+@mixin box-shadow($x, $y, $span, $color)
+  :-webkit-box-shadow $x $y $span $color
+  :-moz-box-shadow $x $y $span $color
+  box-shadow: $x $y $span $color
+  //behavior: url(/PIE.htc)
+
+ 
+@mixin inset-box-shadow($x, $y, $span, $color)
+  :-webkit-box-shadow inset $x $y $span $color
+  :-moz-box-shadow inset $x $y $span $color
+  inset-box-shadow: $x $y $span $color
+  //behavior: url(/PIE.htc)
+  
+@mixin text-shadow($x, $y, $span, $color)
+  text-shadow: $x $y $span $color
+  :-moz-text-shadow $x $y $span $color
+  :-webkit-text-shadow $x $y $span $color
+  
+  
+@mixin border-radius($radius)
+  :-moz-border-radius $radius
+  :-webkit-border-radius $radius
+  border-radius: $radius
+  //behavior: url(/PIE.htc)
+  
+@mixin border-radius-bottom($radius)
+  :-moz-border-radius 0 0 $radius $radius
+  :-webkit-border-radius 0 0 $radius $radius
+  border-radius: 0 0 $radius $radius
+  //behavior: url(/PIE.htc)
+
+@mixin border-radius-top($radius)
+  :-moz-border-radius $radius $radius 0 0 
+  :-webkit-border-radius $radius $radius 0 0 
+  border-radius: $radius $radius 0 0 
+  //behavior: url(/PIE.htc)
+
+@mixin border-radius-right($radius)
+  :-moz-border-radius  0 $radius $radius
+  :-webkit-border-radius 0 $radius $radius 0 
+  border-radius: $radius 0 $radius $radius 0
+  
+@mixin border-radius-left($radius)
+  :-moz-border-radius $radius 0 0 $radius
+  :-webkit-border-radius $radius 0 0 $radius
+  border-radius: $radius 0 0 $radius
+  
+@mixin border-radius-2($radius1, $radius2, $radius3, $radius4)
+  :-moz-border-radius $radius1 $radius2 $radius3 $radius4
+  :-webkit-border-radius $radius1 $radius2 $radius3 $radius4
+  border-radius: $radius1 $radius2 $radius3 $radius4
+    
+#job-app
+  button
+    @include text-shadow(1px, 1px, 1px, white )
+    @include border-radius(4px)
+    border: 1px solid silver
+    background-color: silver
+    font-size: 1.1em
+    margin: 0 10px
+    height: 24px
+  #job-list
+    border: 1px solid silver
+    @include border-radius-2(6px, 0, 0, 0)
+    background-color: #efefef
+    width: 340px
+    bottom: 145px 
+    position: absolute
+    top: 100px
+    left: 100px
+    overflow-y: auto
+    .job-item
+      float: clear
+      padding: 6px 6px 0px 6px
+      border-bottom: 1px solid white
+      @include text-shadow(1px, 1px, 1px, white )
+      &.selected
+        color: white
+        background-color: #2163A5
+        @include text-shadow(1px, 1px, 1px, gray )
+      .title
+        font-size: 1.3em
+        font-weight: bold
+        
+      .short_description
+      .company, .city
+      .info
+        padding-right: 10px
+        margin-right: 10px
+        width: 80px
+      .line
+        padding-top: 6px  
+        margin: 0 -6px
+        border-bottom: 1px solid #cfcfcf
+  #job-toolbar
+    position: absolute
+    bottom: 100px
+    left: 100px
+    width: 340px
+    height: 24px
+    border: 1px solid silver
+    border-top: none
+    background-color: #efefef
+    padding: 10px 0
+    @include border-radius-2(0,0,0,6px)
+  #job-edit
+    position: absolute
+    left: 441px
+    right: 100px
+    top: 100px
+    bottom: 100px
+    @include border-radius-right(6px)
+    border: 1px solid silver
+    overflow-y: auto
+    
+        
+        
+    
+    

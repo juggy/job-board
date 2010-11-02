@@ -1,7 +1,6 @@
 $(function(){
 	
 	window.Job = Backbone.Model.extend({
-		
 	});
 	
 	window.User = Backbone.Model.extend({
