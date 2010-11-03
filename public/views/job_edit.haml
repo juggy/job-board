@@ -1,3 +1,4 @@
+
 %form.formtastic
   %fieldset.inputs
     %legend
@@ -7,22 +8,22 @@
         %input.title{name: 'title', value: job.title}
       %li.string.required
         %label Company:
-        %input.title{name: 'title', value: job.company_name}
+        %input.title{name: 'company_name', value: job.company_name}
       %li.string.required
         %label Contact Email:
-        %input.title{name: 'title', value: job.contact_email}
+        %input.title{name: 'contact_email', value: job.contact_email}
       %li.string.required
         %label City:
-        %input.title{name: 'title', value: job.city}
+        %input.title{name: 'city', value: job.city}
       %li.string.required
         %label State:
-        %input.title{name: 'title', value: job.state}
+        %input.title{name: 'state', value: job.state}
       %li.string.required
         %label Country:
-        %input.title{name: 'title', value: job.country}
+        %input.title{name: 'country', value: job.country}
       %li.string
         %label Short Desc.:
-        %input.title{name: 'title', value: job.short_description}
+        %input.title{name: 'short_description', value: job.short_description}
       %li.string.required
         %label Description:
-        %textarea.title{rows: 30, cols: 80, name: 'title', value: job.description}
+        %textarea.title{rows: 30, cols: 80, name: 'description'}= job.description

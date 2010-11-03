@@ -1,6 +1,9 @@
 $(function(){
 	
 	window.Job = Backbone.Model.extend({
+		initialize: function() {
+			this.set({id : this.get("_id")});
+		}
 	});
 	
 	window.User = Backbone.Model.extend({

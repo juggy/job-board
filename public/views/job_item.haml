@@ -1,10 +1,9 @@
-.job-item
-  .title= job.title
-  .info.left
-    .company= job.company_name
-    .city= job.city
-  .short_des
-    :if job.short_description != undefined
-      = job.short_description
-  .clear
-  .line
+.title= job.title
+.info.left
+  .company= job.company_name
+  .city= job.city
+.short_des
+  :if job.short_description != undefined
+    = job.short_description
+.clear
+.line

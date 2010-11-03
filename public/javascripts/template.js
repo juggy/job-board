@@ -26,7 +26,7 @@ $(function(){
 		return Templating._cache[location];
 	};
 	
-	Templating.render = function(location, locals, callback){
+	Templating.render = function(location, locals, context, callback){
 		
 		var template = Templating.load(location);
 		if(template === Templating.FETCHING){
@@ -38,11 +38,13 @@ $(function(){
 			}
 			queue.push(function(t){
 				var html = Haml.execute(t, window, locals);
-				callback(html);
+				var cb = _.bind(callback, context, html);
+				cb();
 			});
 		} else {
 			var html = Haml.execute(template, window, locals);
-			callback(html);
+			var cb = _.bind(callback, context, html);
+			cb();
 		}
 	};	
 	
