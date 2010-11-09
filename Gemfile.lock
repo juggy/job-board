@@ -75,6 +75,7 @@ GEM
     jammit (0.5.3)
       closure-compiler (>= 0.1.0)
       yui-compressor (>= 0.9.1)
+    json (1.4.6)
     machinist (2.0.0.beta2)
     mail (2.2.9)
       activesupport (>= 2.3.6)
@@ -153,6 +154,7 @@ DEPENDENCIES
   formtastic
   haml
   jammit
+  json
   machinist (>= 2.0.0beta1)
   machinist_mongo (= 2.0.0.beta.1)!
   mongo_session_store!
