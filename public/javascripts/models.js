@@ -1,14 +1,28 @@
 $(function(){
 	
-	window.Job = Backbone.Model.extend({
-		initialize: function() {
-			if(!_.isUndefined("_id")) this.set({id : this.get("_id")});
+	window.BaseModel = Backbone.Model.extend({
+		set:function(attrs, options){
+			if (!attrs) return this;
+      if (attrs.attributes) attrs = attrs.attributes;
+			if(!_.isUndefined(attrs["_id"])){
+				attrs["id"] = attrs["_id"];
+				attrs["_id"]= undefined;
+				console.log(attrs["id"]);
+			}
+				console.log("base");
+			return Backbone.Model.prototype.set.call(this, attrs, options);
 		}
 	});
 	
-	window.User = Backbone.Model.extend({
+	window.Job = BaseModel.extend({
 		initialize: function() {
-			if(!_.isUndefined("_id")) this.set({id : this.get("_id")});
+			//if(!_.isUndefined("_id")) this.set({id : this.get("_id")});
+		}
+	});
+	
+	window.User = BaseModel.extend({
+		initialize: function() {
+			//if(!_.isUndefined("_id")) this.set({id : this.get("_id")});
 		},
 		url: function(){
 			return "/user"
