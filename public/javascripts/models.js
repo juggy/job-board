@@ -7,9 +7,7 @@ $(function(){
 			if(!_.isUndefined(attrs["_id"])){
 				attrs["id"] = attrs["_id"];
 				attrs["_id"]= undefined;
-				console.log(attrs["id"]);
 			}
-				console.log("base");
 			return Backbone.Model.prototype.set.call(this, attrs, options);
 		}
 	});

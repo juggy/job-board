@@ -181,7 +181,6 @@ $(function(){
 		},
 		showWorking: function(){
 			//display working status
-			console.log(this.el);
 			$(".working", this.el).show();
 			$(".error", this.el).hide();
 			$(".ok", this.el).hide();
