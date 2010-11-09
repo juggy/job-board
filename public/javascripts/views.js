@@ -121,6 +121,7 @@ $(function(){
 			this.trigger("form:save:done");
 			
 			var errors = $.parseJSON(response.responseText);
+			this.cleanForm();
 			
 			_.each(_.keys(errors), function(field){
 				var li = $("input[name=" + field + "]", this.el).parent();
@@ -131,7 +132,11 @@ $(function(){
 		success: function(model, response){
 			this.trigger("form:success");
 			this.trigger("form:save:done");
-			this.render();
+			this.cleanForm();
+		},
+		cleanForm: function(){
+			$("li", this.el).removeClass("error");
+			$("li p.inline-errors", this.el).remove();
 		}
 	});
 	
@@ -169,14 +174,14 @@ $(function(){
 	window.ConnectionStatusView = Backbone.View.extend({
 		el: $("#connection-status"),
 		initialize: function(){
-			_.bindAll(this, 'showError', 'showOk', 'close');
+			_.bindAll(this, 'showWorking', 'showError', 'showOk', 'close');
 			JobEdit.bind("form:save", this.showWorking);
 			JobEdit.bind("form:error", this.showError);
 			JobEdit.bind("form:success", this.showOk);
 		},
 		showWorking: function(){
 			//display working status
-			console.log("working");
+			console.log(this.el);
 			$(".working", this.el).show();
 			$(".error", this.el).hide();
 			$(".ok", this.el).hide();
