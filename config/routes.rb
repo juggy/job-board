@@ -1,5 +1,6 @@
 Base::Application.routes.draw do |map|
   devise_for :users
+  match "user" => "users#show", :as=>"user"
   
   resources :jobs
   

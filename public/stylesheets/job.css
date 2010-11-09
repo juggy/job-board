@@ -70,3 +70,20 @@
   border-radius: 6px 0 6px 6px 0;
   border: 1px solid silver;
   overflow-y: auto; }
+
+#connection-status {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 1.2em; }
+  #connection-status .working {
+    padding: 0.8em;
+    background-color: LightYellow;
+    border: 2px solid #ecd72a; }
+  #connection-status .ok {
+    background-color: LightGreen;
+    border: 2px solid green;
+    padding: 0.8em; }
+  #connection-status .error {
+    margin: 0; }

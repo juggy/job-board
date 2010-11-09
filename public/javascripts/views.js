@@ -99,21 +99,55 @@ $(function(){
 		}
 	});
 	
-	window.JobEditView = Backbone.View.extend({
-		el : $("#job-edit"),
+	
+	window.BaseForm = Backbone.View.extend({
 		events:{
 			"change input,textarea,select" : "formChanged"
-		},
+		},	
 		initialize: function(){
-			_.bindAll(this, 'changeSelection', 'closeEdit', "formChanged", 'render');
+			_.bindAll(this, "formChanged", "error", "success");
+			_.extend(this, Backbone.Events);
+		},
+		formChanged: function(){
+			var formArray = $("form", this.el).serializeArray();
+			var formMap = {};
+			_.each(formArray, function(input){ formMap[input["name"]] = input["value"] });
+			
+			this.trigger("form:save");
+			this.model.save(formMap, { success: this.success, error: this.error});
+		},
+		error: function(model, response){
+			this.trigger("form:error");
+			this.trigger("form:save:done");
+			
+			var errors = $.parseJSON(response.responseText);
+			
+			_.each(_.keys(errors), function(field){
+				var li = $("input[name=" + field + "]", this.el).parent();
+				li.addClass("error");
+				li.append('<p class="inline-errors">' + errors[field] + "<p>")
+			});
+		},
+		success: function(model, response){
+			this.trigger("form:success");
+			this.trigger("form:save:done");
+			this.render();
+		}
+	});
+	
+	window.JobEditView = BaseForm.extend({
+		el : $("#job-edit"),
+		initialize: function(){
+			_.bindAll(this, 'changeSelection', 'closeEdit', 'render');
 			Template.load("job_edit"); //to make render requests synchronuous
 			JobList.bind("edit:close", this.closeEdit);
+			
+			// super call
+			BaseForm.prototype.initialize.call(this);
 		},
 		render: function(){
-			if(_.isUndefined(this.model)){
-				this.el.empty();
-				
-			}else{
+			this.el.empty();
+			if(!_.isUndefined(this.model)){
 				me = this;
 				T("job_edit", {job : this.model.toJSON()}, this,
 					function(html){
@@ -129,13 +163,41 @@ $(function(){
 		changeSelection: function(item){
 			this.model = item.model;
 			this.render();
+		}
+	});
+	
+	window.ConnectionStatusView = Backbone.View.extend({
+		el: $("#connection-status"),
+		initialize: function(){
+			_.bindAll(this, 'showError', 'showOk', 'close');
+			JobEdit.bind("form:save", this.showWorking);
+			JobEdit.bind("form:error", this.showError);
+			JobEdit.bind("form:success", this.showOk);
 		},
-		formChanged: function(){
-			var formArray = $("form", this.el).serializeArray();
-			var formMap = {};
-			_.each(formArray, function(input){ formMap[input["name"]] = input["value"] });
-			this.model.set(formMap);
-			this.model.save();
+		showWorking: function(){
+			//display working status
+			console.log("working");
+			$(".working", this.el).show();
+			$(".error", this.el).hide();
+			$(".ok", this.el).hide();
+			this.el.slideDown();
+		},
+		showError: function(){
+			$(".working", this.el).hide();
+			$(".error", this.el).show();
+			$(".ok", this.el).hide();
+			this.el.slideDown();
+		},
+		showOk: function (){
+			//display with ok status
+			$(".working", this.el).hide();
+			$(".error", this.el).hide();
+			$(".ok", this.el).show();
+			this.el.slideDown();
+			window.setTimeout(this.close, 2000);
+		},
+		close : function(){
+			this.el.slideUp();
 		}
 	});
 	
@@ -150,5 +212,5 @@ $(function(){
 	window.JobList = new JobListView;
 	window.JobEdit = 	new JobEditView;
 	window.JobApp = new JobAppView;
-	
+	window.StatusView = new ConnectionStatusView;
 });

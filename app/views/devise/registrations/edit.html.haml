@@ -1,7 +1,7 @@
 #account-edit
   = t "devise.views.registrations.edit.title.head", :name=>resource.name
   - semantic_form_for(resource, :as => resource_name, :url => registration_path(resource_name),:html => { :method => :put }) do |f|
-    = form.semantic_errors
+    = f.semantic_errors
     = f.inputs t("devise.views.registrations.edit.title.account") do
       = f.input :email, :input_html=>{:class=>"title"}
       = f.input :password, :input_html=>{:class=>"title"}

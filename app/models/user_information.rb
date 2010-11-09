@@ -11,7 +11,7 @@ class UserInformation
   
   embedded_in :user, :inverse_of=>"user_information"
   
-  attr_accessible :email, :name, :timezone, :locale, :company_name
+  attr_accessible :name, :timezone, :locale, :company_name
   
   delegate :email, :to=>:user
   
