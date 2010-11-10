@@ -9,6 +9,20 @@ form.formtastic
       li
         display: block
         margin: 0 0 0.5em 1em
+        &.error
+          border: none
+          background-color: transparent
+          input, textarea, select
+            border: 1px solid red
+            background-color: #FBE3E4
+          p
+            display: inline-block
+            margin: 0px 0.5em 
+        textarea
+          padding: 5px
+          margin: 0.5em 0px
+          border: 1px solid #bbb
+          font-size: 1.5em
         p.inline-hints
           margin: 0.5em 0px 0px 15%
         label

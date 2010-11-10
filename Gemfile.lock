@@ -58,6 +58,9 @@ GEM
     bson_ext (1.1.1)
     builder (2.1.2)
     closure-compiler (0.3.3)
+    countries (0.3.0)
+      currencies (>= 0.2.0)
+    currencies (0.2.1)
     database_cleaner (0.6.0)
     devise (1.1.3)
       bcrypt-ruby (~> 2.1.2)
@@ -148,6 +151,7 @@ DEPENDENCIES
   autotest-growl
   autotest-rails
   bson_ext
+  countries
   database_cleaner
   devise
   forgery

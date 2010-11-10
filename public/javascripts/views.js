@@ -24,6 +24,9 @@ $(function(){
 				item = this.items[job.cid] = new JobListItemView({model: job});
 				item.bind("edit:item", this.changeSelection);
 				item.bind("edit:item", JobEdit.changeSelection);
+				if(job.isNew()){
+					item.edit();
+				}
 			}else
 				item = this.items[job.cid];
 		
@@ -105,8 +108,11 @@ $(function(){
 			"change input,textarea,select" : "formChanged"
 		},	
 		initialize: function(){
-			_.bindAll(this, "formChanged", "error", "success");
+			_.bindAll(this, "save", "formChanged", "error", "success");
 			_.extend(this, Backbone.Events);
+		},
+		save: function(){
+			this.formChanged();
 		},
 		formChanged: function(){
 			var formArray = $("form", this.el).serializeArray();
@@ -159,14 +165,19 @@ $(function(){
 						me.el.html(html);
 					}
 				);
+				if(this.model.isNew()){
+					this.save();
+				}
 			}
 		},
 		closeEdit: function(){
 			this.model = undefined;
+			StatusView.close();
 			this.render();
 		},
 		changeSelection: function(item){
 			this.model = item.model;
+			StatusView.close();
 			this.render();
 		}
 	});

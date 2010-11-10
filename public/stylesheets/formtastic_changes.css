@@ -7,6 +7,20 @@ form.formtastic fieldset {
   form.formtastic fieldset ol li {
     display: block;
     margin: 0 0 0.5em 1em; }
+    form.formtastic fieldset ol li.error {
+      border: none;
+      background-color: transparent; }
+      form.formtastic fieldset ol li.error input, form.formtastic fieldset ol li.error textarea, form.formtastic fieldset ol li.error select {
+        border: 1px solid red;
+        background-color: #fbe3e4; }
+      form.formtastic fieldset ol li.error p {
+        display: inline-block;
+        margin: 0px 0.5em; }
+    form.formtastic fieldset ol li textarea {
+      padding: 5px;
+      margin: 0.5em 0px;
+      border: 1px solid #bbbbbb;
+      font-size: 1.5em; }
     form.formtastic fieldset ol li p.inline-hints {
       margin: 0.5em 0px 0px 15%; }
     form.formtastic fieldset ol li label {

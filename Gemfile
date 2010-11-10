@@ -17,6 +17,7 @@ gem 'mongo_session_store', :git => 'git://github.com/nmerouze/mongo_session_stor
 gem "haml"
 gem "json"
 gem "formtastic"
+gem "countries"
 gem "jammit"
 gem 'rails3-generators', :group => :development
 
