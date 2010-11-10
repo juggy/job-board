@@ -130,7 +130,7 @@ $(function(){
 			this.cleanForm();
 			
 			_.each(_.keys(errors), function(field){
-				var li = $("input[name=" + field + "]", this.el).parent();
+				var li = $("textarea[name]" + field + ", input[name=" + field + "]", this.el).parent();
 				li.addClass("error");
 				li.append('<p class="inline-errors">' + errors[field] + "<p>")
 			});
